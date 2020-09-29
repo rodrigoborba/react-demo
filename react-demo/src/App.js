@@ -1,37 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
-import { render } from '@testing-library/react';
 
-
-class App extends Component{
+import Repositories from './containers/Repositories'
   
-  constructor(props){
-    super(props);
-
-    this.state = {
-      data:[]
-    }
-
-   }
-
-  componentDidMount(){
-    axios.get('https://api.github.com/repositories')
-      .then(({data})=>{
-        this.setState({data});
-      })    
-  } 
-
+class App extends Component{
   render(){
-    const { data } = this.state
 
     return (
 
       <div className="App">
-          <ul>
-            {data.map(item => <li>{item.full_name}</li>)}
-          </ul>
+          <Repositories/>
       </div> 
  
    );
